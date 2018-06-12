@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Depot</title>
+<head>
+<title>Sam Sung</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+</head>
+<body id="store">
+    <div id="banner">
+       <!--  <%= image_tag("samsung.jpg") %> -->
+        <%= @page_title || "SAM SUNG" %>
+    </div>
+    <div id="columns">
+        <div id="side">
+           <div id="cart">
+                <%= render current_cart %>
+            </div>
+          <ul>
+            <li><a href="http://localhost:3000/">Home</a></li>
+            <li><a href="http://localhost:3000/products">Product</a></li>
+          </ul>
+        </div>
+        <div id="main">
+            <%= yield %>
+        </div>
+    </div> 
+</body>
 </html>

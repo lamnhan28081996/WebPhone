@@ -1,0 +1,38 @@
+<% if notice %>
+   <p id="notice"><%= notice %></p>
+<% end %>
+ 
+<h1>Product List</h1>
+<div id="product_list">
+ 
+ <table>
+    <% @products.each do |product| %>
+        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+  
+            <td>
+                <%= image_tag(product.image_url, :class => 'list_image') %>
+                 <div class="price_line">
+                    <span class="price"><%= number_to_currency(product.price) %></span>
+                    <%= button_to 'Add to Cart', line_items_path(:product_id => product), :remote => true %>
+                </div>
+            </td>
+  
+            <td class="list_description">
+                <dl>
+                    <dt><%= product.title %></dt>
+                    <dd><%= truncate(strip_tags(product.description),
+                            :length => 80) %></dd>
+                </dl>
+            </td>
+  
+            <td class="list_actions">
+                <%= link_to 'Xem chi tiet', product %><br/>
+            </td>
+        </tr>
+    <% end %>
+    </table>
+</div>
+ 
+<br />
+
+<p><%= will_paginate @products %></p>

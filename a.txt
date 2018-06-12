@@ -1,1 +1,8 @@
 rails generate scaffold Product title:string description:text image_url:string price:decimal species:string
+
+rails generate controller store index
+
+rails generate scaffold line_item product_id:integer cart_id:integer
+
+rails generate migration add_quantity_to_line_items quantity:integer
+
